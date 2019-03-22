@@ -17,9 +17,13 @@ app.use((express.static(__dirname + '/public'))); //set root dir to the public f
 
 //routes
 
-app.get('/controller', function(req,res) {
-    res.sendFile(__dirname + '/public/controller.html');
+app.get('/competitive', function(req,res) {
+    res.sendFile(__dirname + '/public/competitive.html');
 });
+app.get('/cooperative', function(req,res) {
+    res.sendFile(__dirname + '/public/cooperative.html');
+});
+
 
 
 
@@ -90,7 +94,7 @@ socketIO.on('connection', function(socket) {
         //ADD POINTS
         player1 = 0;
         player2 = 0;
-        
+
         if ((data.playerId===playerIds[0]) && (data.id == "card1" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
@@ -244,46 +248,6 @@ socketIO.on('connection', function(socket) {
 
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //EXAMPLES
-    //custom events
-    //socket = one client
-    //socketIO.sockets = all clients
-    socket.on('red', function(data) {
-        console.log('red event heard');
-        socketIO.sockets.emit('color_change', {r:255, g:0, b:0});
-    });
-
-    socket.on('green', function(data) {
-        console.log('green event heard');
-        socketIO.sockets.emit('color_change', {r:0, g:255, b:0});
-    });
-
-    socket.on('blue', function(data) {
-        console.log('blue event heard');
-        socketIO.sockets.emit('color_change', {r:0, g:0, b:255});
-    });
 
 
     

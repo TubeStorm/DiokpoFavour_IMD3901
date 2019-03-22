@@ -35,10 +35,48 @@
                         
                         <!--CREATE-->
                         <a-obj-model load-environment src="#win-obj" material="src:#win-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
-                        <a-obj-model load-environment src="#coop-obj" material="src:#win-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
-                        <a-obj-model load-environment src="#comp-obj" material="src:#win-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
+                        <a-obj-model id="cooper" load-environment src="#coop-obj" material="src:#win-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
+                        <a-obj-model id="compet" load-environment src="#comp-obj" material="src:#win-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
                     </a-scene>
 
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+
+        //default connect event
+        socket.on('connect', function() {
+            console.log("reconnected!");
+        });
+
+
+                //LOADING SCREENS
+        document.querySelector('#cooper').addEventListener('click', function() {
+                console.log("cooperative clicked!");             
+                window.location.href = 'cooperative.html';
+       
+            });
+        
+        document.querySelector('#compet').addEventListener('click', function() {
+                console.log("competitive clicked!");             
+                window.location.href = 'competitive.html';
+       
+            });
+
+         
+
+        
+
+         
+
+
+
+
+
+
+
+
+
+    </script>
     
     </body>
 </html>
