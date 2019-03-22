@@ -24,6 +24,7 @@ app.get('/controller', function(req,res) {
 
 
 
+
 //websocket stuff
 socketIO.on('connection', function(socket) {
     console.log(socket.id + ' has connected!');
@@ -87,6 +88,9 @@ socketIO.on('connection', function(socket) {
 
 
         //ADD POINTS
+        player1 = 0;
+        player2 = 0;
+        
         if ((data.playerId===playerIds[0]) && (data.id == "card1" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
@@ -176,6 +180,9 @@ socketIO.on('connection', function(socket) {
 
         //OPEN SCREENS
         total = player1 + player2;
+        if (total > 8){
+            total = 0;
+        }
 
         if ((seconds == 0) && (player1 + player2 != 8)){
             console.log('GAME OVER THE BOMB EXPLODED');
