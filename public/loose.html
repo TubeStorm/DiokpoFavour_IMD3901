@@ -35,7 +35,7 @@
                         
                         <!--CREATE-->
                         <a-obj-model load-environment src="#loose-obj" material="src:#loose-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
-                        <a-obj-model load-environment src="#coop-obj" material="src:#loose-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
+                        <a-obj-model id="cooper" load-environment src="#coop-obj" material="src:#loose-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
                         <a-obj-model id="compet" load-environment src="#comp-obj" material="src:#loose-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
     </a-scene>
 
@@ -50,13 +50,12 @@
 
 
                 //LOADING SCREENS
-
         document.querySelector('#compet').addEventListener('click', function() {
                 console.log("competitive clicked!");
+
                 socket.on('com', function(data) {
                 window.location.href = 'controller.html';
             });
-
             });
 
          

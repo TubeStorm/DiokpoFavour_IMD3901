@@ -230,6 +230,15 @@ socketIO.on('connection', function(socket) {
 
 
 
+    socket.on('removecard', function(data) { 
+
+        socketIO.sockets.emit('delete_card', data);
+
+
+    });
+
+
+
 
 
 
