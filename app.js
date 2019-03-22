@@ -43,28 +43,7 @@ socketIO.on('connection', function(socket) {
 
  
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-    
-      // Get todays date and time
-      var now = new Date().getTime();
-        
-      // Find the distance between now and the count down date
-      var distance = countDownDate - now;
-        
-      // Time calculations for seconds
-      seconds = Math.floor((distance % (1000 * 9)) / 1000);
-      console.log(seconds + " Seconds Remaining ");
-      // Output the result
-        if ((seconds === 4) || (seconds ===0)){
-
-     // console.log(seconds + " Seconds Remaining ");
-        }
-      // If the count down is over, write some text 
-      if (distance < 0) {
-        clearInterval(x);
-      }
-    }, 1000);
+ 
 
 
 
@@ -80,7 +59,28 @@ socketIO.on('connection', function(socket) {
         //console.log(data.playerId);
        // console.log(playerIdName);
        //console.log(data);
+   // Update the count down every 1 second
+   var x = setInterval(function() {
+    
+    // Get todays date and time
+    var now = new Date().getTime();
+      
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+      
+    // Time calculations for seconds
+    seconds = Math.floor((distance % (1000 * 9)) / 1000);
+    console.log(seconds + " Seconds Remaining ");
+    // Output the result
+      if ((seconds === 4) || (seconds ===0)){
 
+   // console.log(seconds + " Seconds Remaining ");
+      }
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+    }
+  }, 1000);
 
         //DELETE CARD
         socketIO.sockets.emit('delete_card', data);
