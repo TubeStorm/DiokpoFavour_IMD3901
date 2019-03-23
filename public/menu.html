@@ -53,12 +53,14 @@
         document.querySelector('#cooper').addEventListener('click', function() {
                 console.log("competitive clicked!");             
                 window.location.href = 'cooperative.html';
+                socket.emit('socketName',{menuId:socket.id});
        
             });
         
         document.querySelector('#compet').addEventListener('click', function() {
                 console.log("competitive clicked!");             
                 window.location.href = 'competitive.html';
+                socket.emit('socketName',{menuId:socket.id});
        
             });
 

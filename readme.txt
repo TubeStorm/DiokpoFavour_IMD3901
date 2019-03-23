@@ -1,10 +1,15 @@
 Overview
 my game features 8 cards. each player has to click the cards to defuse a bomb
 I chose this design because it was simple yet, interesting.
-	*competitive: each player has to click all the cards on their screen, to get the most points and win.
-	*cooperative: each player has to click the same correct card at the right time to diffuse the bomb and win the game.
-	[before you change to another mode, restart app.js, you do not need to restart the win.html or loose.html 
-		screen you land on after a game]
+
+MODES AVAILABLE: 
+[before you change to another mode, please restart app.js]
+*competitive mode: each player has to click all the cards on their screen, to get the most points and win.
+*cooperative mode: each player has to work together to pick the right card. if either of them select the wrong card they both loose.
+competitive mode --> localhost:8080/competitive	
+cooperative mode --> localhost:8080/cooperative	
+
+
 
 Challenging
 	*working with websocket was new and difficult

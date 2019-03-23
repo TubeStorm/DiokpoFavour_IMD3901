@@ -94,11 +94,48 @@
             });
 
 
+//DELETE CARD CLICKED
+document.querySelector('#card1').addEventListener('click', function() {
+                console.log("card 1 clicked!");
+                socket.emit('removecard',{id:"card1", playerId:socket.id});
 
-            //DELETE CARD CLICKED
-           
-          
+            });
 
+                   document.querySelector('#card2').addEventListener('click', function() {
+                console.log("card 2 clicked!");
+                socket.emit('removecard',{id:"card2", playerId:socket.id});
+
+            });
+
+                   document.querySelector('#card3').addEventListener('click', function() {
+                console.log("card 3 clicked!");
+                socket.emit('removecard',{id:"card3", playerId:socket.id});
+
+            });
+
+                   document.querySelector('#card4').addEventListener('click', function() {
+                console.log("card 4 clicked!");
+                socket.emit('removecard',{id:"card4", playerId:socket.id});
+
+            });
+
+                   document.querySelector('#card5').addEventListener('click', function() {
+                console.log("card 5 clicked!");
+                socket.emit('removecard',{id:"card5", playerId:socket.id});
+
+            });
+
+                   document.querySelector('#card6').addEventListener('click', function() {
+                console.log("card 6 clicked!");
+                socket.emit('removecard',{id:"card6", playerId:socket.id});
+
+            });
+
+                   document.querySelector('#card8').addEventListener('click', function() {
+                console.log("card 8 clicked!");
+                socket.emit('removecard',{id:"card8", playerId:socket.id});
+
+            });
                    document.querySelector('#cardKey').addEventListener('click', function() {
                 console.log("card 7 clicked!");
                 socket.emit('removecard',{id:"cardKey", playerId:socket.id});
