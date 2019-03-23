@@ -72,7 +72,7 @@
                         <a-obj-model load-environment id="card4" src="#card4-obj" material="src:#card4-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
                         <a-obj-model load-environment id="card5" src="#card5-obj" material="src:#card5-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
                         <a-obj-model load-environment id="card6" src="#card6-obj" material="src:#card6-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
-                        <a-obj-model load-environment id="card7" src="#card7-obj" material="src:#card7-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
+                        <a-obj-model load-environment id="cardKey" src="#card7-obj" material="src:#card7-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
                         <a-obj-model load-environment id="card8" src="#card8-obj" material="src:#card8-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
                          
                         <a-entity id="sky" geometry="primitive:sphere; radius:500;" material="shader:flat; src:#skymap; side:back; height:2048; width:2048"></a-entity>
@@ -99,15 +99,13 @@
            
           
 
-                   document.querySelector('#card7').addEventListener('click', function() {
+                   document.querySelector('#cardKey').addEventListener('click', function() {
                 console.log("card 7 clicked!");
-                socket.emit('removecard',{id:"card7", playerId:socket.id});
+                socket.emit('removecard',{id:"cardKey", playerId:socket.id});
 
             });
 
    
-
-            
 
              socket.on('delete_card', function(data) {
                 console.log(data.id + " deleted by " + data.playerId);

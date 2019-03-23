@@ -7,7 +7,7 @@ const playerIds = [];
 let player1 = 0;
 let player2 = 0;
 let total = 0;
-let win;
+let win = false;
 let countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
 let seconds;
 
@@ -178,6 +178,11 @@ socketIO.on('connection', function(socket) {
             console.log('player 2 has ' + player2 + ' points');
         }
 
+        if (((data.playerId===playerIds[1]) || (data.playerId===playerIds[1])) && (data.id === "cardKey" ) ){
+            console.log('bomb found');
+            win = true;
+        }
+
 
         if ((player1 > 8) || (player2 > 8)){
             player1 = 0;
@@ -216,41 +221,27 @@ socketIO.on('connection', function(socket) {
 
         //FOR COMPETITIVE: check for who is higher, display winner
         if (player2 > player1){
-            console.log('Player 2 WINS');
+            console.log('Player 2 WINS ' + player2 + ' points');
+        }
+        else if (player1 > player2){
+            console.log('Player 1 WINS ' + player1 + ' points');
         }
         else{
-            console.log('Player 1 WINS');
-        }
-
-        if (player1 > player2){
-            console.log('Player 1 WINS');
-        }
-        else{
-            console.log('Player 1 WINS');
+            console.log('Both Players WIN ');
         }
 
 
 
 
         //FOR  COOPERATIVE: check if they both select the right card, display they both win or loose
-        if ((seconds === 0) && (data.id !== "card7" )){
+        if ((seconds === 0) && (win === false)){
             console.log('GAME OVER THE BOMB EXPLODED');
             socketIO.sockets.emit('loose',{value:total});
         }
 
-        if ((seconds === 0) && (data.id === "card7" )){
-            console.log('YOU DIFFUSED THE BOMB');
+        if ((seconds === 0) && (win === true)){
             socketIO.sockets.emit('win',{value:total});
         }
-
-
-
-
-
-
-
-
-
 
 
     });
