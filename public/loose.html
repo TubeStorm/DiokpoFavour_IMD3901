@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="/js/aframe.min.js"></script> <!-- https://github.com/aframevr/aframe -->  
-        <script src="/js/cursor-listener.js"></script>
+        <script src="/js/aframe.min.js"></script> <!-- https://github.com/aframevr/aframe --> 
     </head>
     <body>
 
@@ -34,49 +33,10 @@
                         <a-entity light="type: ambient; intensity: 0.9; color:#bbb;"></a-entity>
                         
                         <!--CREATE-->
-                        <a-obj-model load-environment src="#loose-obj" material="src:#loose-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
-                        <a-obj-model id="cooper" load-environment src="#coop-obj" material="src:#loose-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
-                        <a-obj-model id="compet" load-environment src="#comp-obj" material="src:#loose-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;" spherical-env-map="src:#skymap;"></a-obj-model>
+                        <a-obj-model load-environment src="#loose-obj" material="src:#loose-mtl" position="0 0 0" rotation="0 0 0" scale="1 1 1" shadow="cast:true; receive:true;"></a-obj-model>
+                
     </a-scene>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        let socket = io();
 
-        //default connect event
-        socket.on('connect', function() {
-            console.log("reconnected!");
-        });
-
-
-                //LOADING SCREENS
-        document.querySelector('#cooper').addEventListener('click', function() {
-                console.log("competitive clicked!");             
-                window.location.href = 'cooperative.html';
-       
-            });
-        
-        document.querySelector('#compet').addEventListener('click', function() {
-                console.log("competitive clicked!");             
-                window.location.href = 'controller.html';
-       
-            });
-
-         
-
-        
-
-         
-
-
-
-
-
-
-
-
-
-    </script>
-    
     </body>
 </html>

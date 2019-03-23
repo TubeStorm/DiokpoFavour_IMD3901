@@ -1,8 +1,8 @@
 Overview
-my game features 8 cards. each player has to click the cards to difuse a bomb
+my game features 8 cards. each player has to click the cards to defuse a bomb
 I chose this design because it was simple yet, interesting.
 	*competitive: each player has to click all the cards on their screen, to get the most points and win.
-	*cooperative: each player has to click the same card at the right time to diffuse the bomb and win the game.
+	*cooperative: each player has to click the same correct card at the right time to diffuse the bomb and win the game.
 	[before you change to another mode, restart app.js, you do not need to restart the win.html or loose.html 
 		screen you land on after a game]
 
@@ -15,5 +15,6 @@ Challenging
 What Went Well
 	* i was able to get the players to compete against each other.
 	* i was able to total the points of each player to see if they won or lost.
+	* i was able to understand how to use websocket
 
 url:https://github.com/TubeStorm/DiokpoFavour_IMD3901.git

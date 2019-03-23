@@ -23,6 +23,9 @@ app.get('/competitive', function(req,res) {
 app.get('/cooperative', function(req,res) {
     res.sendFile(__dirname + '/public/cooperative.html');
 });
+app.get('/menu', function(req,res) {
+    res.sendFile(__dirname + '/public/menu.html');
+});
 
 
 
@@ -95,82 +98,82 @@ socketIO.on('connection', function(socket) {
         player1 = 0;
         player2 = 0;
 
-        if ((data.playerId===playerIds[0]) && (data.id == "card1" ) ){
+        if ((data.playerId===playerIds[0]) && (data.id === "card1" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
         }
 
-        if ((data.playerId===playerIds[1]) && (data.id == "card1" ) ){
+        if ((data.playerId===playerIds[1]) && (data.id === "card1" ) ){
             player2 += 1;
             console.log('player 2 has ' + player2 + ' points');
         }
 
-        if ((data.playerId===playerIds[0]) && (data.id == "card2" ) ){
+        if ((data.playerId===playerIds[0]) && (data.id === "card2" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
         }
 
-        if ((data.playerId===playerIds[1]) && (data.id == "card2" ) ){
+        if ((data.playerId===playerIds[1]) && (data.id === "card2" ) ){
             player2 += 1;
             console.log('player 2 has ' + player2 + ' points');
         }
 
-        if ((data.playerId===playerIds[0]) && (data.id == "card3" ) ){
+        if ((data.playerId===playerIds[0]) && (data.id === "card3" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
         }
 
-        if ((data.playerId===playerIds[1]) && (data.id == "card3" ) ){
+        if ((data.playerId===playerIds[1]) && (data.id === "card3" ) ){
             player2 += 1;
             console.log('player 2 has ' + player2 + ' points');
         }
 
-        if ((data.playerId===playerIds[0]) && (data.id == "card4" ) ){
+        if ((data.playerId===playerIds[0]) && (data.id === "card4" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
         }
 
-        if ((data.playerId===playerIds[1]) && (data.id == "card4" ) ){
+        if ((data.playerId===playerIds[1]) && (data.id === "card4" ) ){
             player2 += 1;
             console.log('player 2 has ' + player2 + ' points');
         }
 
-        if ((data.playerId===playerIds[0]) && (data.id == "card5" ) ){
+        if ((data.playerId===playerIds[0]) && (data.id === "card5" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
         }
 
-        if ((data.playerId===playerIds[1]) && (data.id == "card5" ) ){
+        if ((data.playerId===playerIds[1]) && (data.id === "card5" ) ){
             player2 += 1;
             console.log('player 2 has ' + player2 + ' points');
         }
 
-        if ((data.playerId===playerIds[0]) && (data.id == "card6" ) ){
+        if ((data.playerId===playerIds[0]) && (data.id === "card6" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
         }
 
-        if ((data.playerId===playerIds[1]) && (data.id == "card6" ) ){
+        if ((data.playerId===playerIds[1]) && (data.id === "card6" ) ){
             player2 += 1;
             console.log('player 2 has ' + player2 + ' points');
         }
 
-        if ((data.playerId===playerIds[0]) && (data.id == "card7" ) ){
+        if ((data.playerId===playerIds[0]) && (data.id === "card7" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
         }
 
-        if ((data.playerId===playerIds[1]) && (data.id == "card7" ) ){
+        if ((data.playerId===playerIds[1]) && (data.id === "card7" ) ){
             player2 += 1;
             console.log('player 2 has ' + player2 + ' points');
         }
 
-        if ((data.playerId===playerIds[0]) && (data.id == "card8" ) ){
+        if ((data.playerId===playerIds[0]) && (data.id === "card8" ) ){
             player1 += 1;
             console.log('player 1 has ' + player1 + ' points');
         }
 
-        if ((data.playerId===playerIds[1]) && (data.id == "card8" ) ){
+        if ((data.playerId===playerIds[1]) && (data.id === "card8" ) ){
             player2 += 1;
             console.log('player 2 has ' + player2 + ' points');
         }
@@ -186,28 +189,6 @@ socketIO.on('connection', function(socket) {
         total = player1 + player2;
         if (total > 8){
             total = 0;
-        }
-
-        if ((seconds == 0) && (player1 + player2 != 8)){
-            console.log('GAME OVER THE BOMB EXPLODED');
-            if (player2 > player1){
-                console.log('Player 2 WINS');
-            }
-            else{
-                console.log('Player 1 WINS');
-            }
-            
-        }
-
-        if ((seconds == 0) && (total === 8)){
-            console.log('YOU DIFFUSED THE BOMB');
-
-            if (player1 > player2){
-                console.log('Player 1 WINS');
-            }
-            else{
-                console.log('Player 1 WINS');
-            }
         }
 
 
@@ -231,6 +212,45 @@ socketIO.on('connection', function(socket) {
         socketIO.sockets.emit('loose',{value:total});
         console.log('total is ' + total);
         }
+
+
+        //FOR COMPETITIVE: check for who is higher, display winner
+        if (player2 > player1){
+            console.log('Player 2 WINS');
+        }
+        else{
+            console.log('Player 1 WINS');
+        }
+
+        if (player1 > player2){
+            console.log('Player 1 WINS');
+        }
+        else{
+            console.log('Player 1 WINS');
+        }
+
+
+
+
+        //FOR  COOPERATIVE: check if they both select the right card, display they both win or loose
+        if ((seconds === 0) && (data.id !== "card7" )){
+            console.log('GAME OVER THE BOMB EXPLODED');
+            socketIO.sockets.emit('loose',{value:total});
+        }
+
+        if ((seconds === 0) && (data.id === "card7" )){
+            console.log('YOU DIFFUSED THE BOMB');
+            socketIO.sockets.emit('win',{value:total});
+        }
+
+
+
+
+
+
+
+
+
 
 
     });
