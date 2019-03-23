@@ -10,10 +10,6 @@ let total = 0;
 let p1win;
 let p2win;
 let win1;
-let countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-let seconds;
-let countDownDate1 = new Date("Jan 5, 2021 15:37:25").getTime();
-let seconds1;
 
 const LISTEN_PORT = 8080; //make sure greater than 3000. Some ports are reserved/blocked by firewall ...
 
@@ -27,10 +23,6 @@ app.get('/competitive', function(req,res) {
 app.get('/cooperative', function(req,res) {
     res.sendFile(__dirname + '/public/cooperative.html');
 });
-app.get('/menu', function(req,res) {
-    res.sendFile(__dirname + '/public/menu.html');
-});
-
 
 
 
@@ -52,17 +44,6 @@ socketIO.on('connection', function(socket) {
         }
     });
 
-                                                    //TIMER
-                                                        var x1 = setInterval(function() {
-                                                            // Get todays date and time
-                                                            var now1 = new Date().getTime();
-                                                            // Find the distance between now and the count down date
-                                                            var distance1 = countDownDate1 - now1;
-                                                            // Time calculations for seconds
-                                                            seconds1 = Math.floor((distance1 % (1000 * 15)) / 1000);
-                                                            //console.log(seconds1 + " Seconds Remaining ");
-                                                        }, 1000);
-
  
 
 
@@ -82,12 +63,6 @@ socketIO.on('connection', function(socket) {
             console.log(playerIds);
         });
 
-                                                    //TIMER
-                                                    var x = setInterval(function() {
-                                                        var now = new Date().getTime();
-                                                        var distance = countDownDate - now;
-                                                        seconds = Math.floor((distance % (1000 * 9)) / 1000);
-                                                    }, 1000);
 
         //DELETE CARD
         socketIO.sockets.emit('delete_card', data);
@@ -227,16 +202,10 @@ socketIO.on('connection', function(socket) {
         }
 
 
-        if ((data.playerId===playerIds[0]) && (p1win === true)){
+        if ((p1win === true) && (p2win === false)){
             socketIO.sockets.emit('win',{value:total});
         }
-        if ((data.playerId===playerIds[1]) && (p2win === true)){
-            socketIO.sockets.emit('win',{value:total});
-        }
-        if ((data.playerId===playerIds[0]) && (p1win === false)){
-            socketIO.sockets.emit('loose',{value:total});
-        }
-        if ((data.playerId===playerIds[1]) && (p2win === false)){
+        if ((p2win === true) && (p1win === false)){
             socketIO.sockets.emit('loose',{value:total});
         }
 
